@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+		<script src="jquery.min.js"></script>
+        <style type="text/css">
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
+            canvas {
+                margin: auto;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+            }
+			
+			section{
+				width: 600px;
+				height: 400px;
+				display: flex;
+				justify-content: center;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+			
+			div{
+				width: 1em;
+				height: 1em;
+				opacity: 0;
+				transition: 1s;
+				transform: scale(1.5) translateY(-5px);
+				
+				box-shadow: 0 3em 0 0 #4b4b4b, 1em 4em 0 0 #4b4b4b, 0 4em 0 0 #649632, -1em 4em 0 0 #4b4b4b, -2em 5em 0 0 #4b4b4b, -1em 5em 0 0 #96cbcf, 0 5em 0 0 #649632, 1em 5em 0 0 #649632, 2em 5em 0 0 #4b4b4b, 3em 6em 0 0 #4b4b4b, 2em 6em 0 0 #649632, 1em 6em 0 0 #eb0000, 0 6em 0 0 #649632, -1em 6em 0 0 #649632, -2em 6em 0 0 #649632, -3em 6em 0 0 #4b4b4b, -2em 7em 0 0 #4b4b4b, -1em 7em 0 0 #649632, 0 7em 0 0 #2d8434, 1em 7em 0 0 #649632, 2em 7em 0 0 #4b4b4b, 3em 8em 0 0 #4b4b4b, 2em 8em 0 0 #649632, 1em 8em 0 0 #2d8434, 0 8em 0 0 #649632, -1em 8em 0 0 #2d8434, -2em 8em 0 0 #649632, -3em 8em 0 0 #4b4b4b, -4em 9em 0 0 #4b4b4b, -3em 9em 0 0 #649632, -2em 9em 0 0 #eb0000, -1em 9em 0 0 #649632, 0 9em 0 0 #d8ba00, 1em 9em 0 0 #649632, 2em 9em 0 0 #96cbcf, 3em 9em 0 0 #649632, 4em 9em 0 0 #4b4b4b, 3em 10em 0 0 #4b4b4b, 2em 10em 0 0 #649632, 1em 10em 0 0 #2d8434, 0 10em 0 0 #649632, -1em 10em 0 0 #2d8434, -2em 10em 0 0 #649632, -3em 10em 0 0 #4b4b4b, -4em 11em 0 0 #4b4b4b, -3em 11em 0 0 #649632, -2em 11em 0 0 #2d8434, -1em 11em 0 0 #649632, 0 11em 0 0 #2d8434, 1em 11em 0 0 #649632, 2em 11em 0 0 #2d8434, 3em 11em 0 0 #d8ba00, 4em 11em 0 0 #4b4b4b, 5em 12em 0 0 #4b4b4b, 4em 12em 0 0 #649632, 3em 12em 0 0 #649632, 2em 12em 0 0 #649632, 1em 12em 0 0 #649632, 0 12em 0 0 #649632, -1em 12em 0 0 #649632, -2em 12em 0 0 #649632, -3em 12em 0 0 #649632, -4em 12em 0 0 #649632, -5em 12em 0 0 #4b4b4b, -4em 13em 0 0 #4b4b4b, -3em 13em 0 0 #d8ba00, -2em 13em 0 0 #649632, -1em 13em 0 0 #96cbcf, 0 13em 0 0 #649632, 1em 13em 0 0 #649632, 2em 13em 0 0 #eb0000, 3em 13em 0 0 #649632, 4em 13em 0 0 #4b4b4b, 3em 14em 0 0 #4b4b4b, 2em 14em 0 0 #4b4b4b, 1em 14em 0 0 #4b4b4b, 0 14em 0 0 #aa782c, -1em 14em 0 0 #4b4b4b, -2em 14em 0 0 #4b4b4b, -3em 14em 0 0 #4b4b4b, -1em 15em 0 0 #4b4b4b, 0 15em 0 0 #4b4b4b, 1em 15em 0 0 #4b4b4b
+			}
+			
+        </style>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="600px" height="400px"></canvas> 
+		<section>
+			<div></div>
+		</section>
+		
+    </body>
+    <script>
+        //canvas默认宽高是300*150
+        let myCanvas = document.querySelector('#myCanvas')
+        //获取一个 绘制上下文
+        let context = myCanvas.getContext('2d');
+		context.moveTo(300, 55);
+		var x = [280,280,260,260,235,235,210,210,235,235,210,210,185,185,210,210,185,185,160,160,185,185,210,210,255,255,345,345,390,390,415,415,440,440,415,415,390,390,420,420,390,390,365,365,390,390,365,365,340,340,320,320,300]
+		var y = [55,75,75,100,100,125,125,160,160,175,175,195,195,235,235,245,245,265,265,305,305,330,330,353,353,375,375,353,353,330,330,305,305,265,265,245,245,230,230,195,195,170,170,160,160,120,120,100,100,75,75,55,55]
+//		context.lineTo(280,55);
+//		context.lineTo(280,75);
+//		context.lineTo(260,75);
+//		context.lineTo(260,100);
+//		context.lineTo(235,100);
+//		context.lineTo(235,125);
+//		context.lineTo(210,125);
+//		context.lineTo(210,160);
+//		context.lineTo(235,160);
+//		context.lineTo(235,175);
+//		context.lineTo(210,175);
+//		context.lineTo(210,195);
+//		context.lineTo(185,195);
+//		context.lineTo(185,235);
+//		context.lineTo(210,235);
+//		context.lineTo(210,245);
+//		context.lineTo(185,245);
+//		context.lineTo(185,265);
+//		context.lineTo(160,265);
+//		context.lineTo(160,305);
+//		context.lineTo(185,305);
+//		context.lineTo(185,330);
+//		context.lineTo(210,330);
+//		context.lineTo(210,353);
+//		context.lineTo(255,353);
+//		context.lineTo(255,375);
+//		context.lineTo(345,375);
+//		context.lineTo(345,353);
+//		context.lineTo(390,353);
+//		context.lineTo(390,330);
+//		context.lineTo(415,330);
+//		context.lineTo(415,305);
+//		context.lineTo(440,305);
+//		context.lineTo(440,265);
+//		context.lineTo(415,265);
+//		context.lineTo(415,245);
+//		context.lineTo(390,245);
+//		context.lineTo(390,230);
+//		context.lineTo(420,230);
+//		context.lineTo(420,195);
+//		context.lineTo(390,195);
+//		context.lineTo(390,170);
+//		context.lineTo(365,170);
+//		context.lineTo(365,160);
+//		context.lineTo(390,160);
+//		context.lineTo(390,120);
+//		context.lineTo(365,120);
+//		context.lineTo(365,100);
+//		context.lineTo(340,100);
+//		context.lineTo(340,75);
+//		context.lineTo(320,75);
+//		context.lineTo(320,55);
+//		context.lineTo(300,55);
+		context.lineWidth = 10;
+		context.strokeStyle = "rgba(75,75,75,1.00)"
+		context.fillStyle = "rgba(100,150,50,1.00)"
+		var index = 0;
+		console.log(x.length)
+		console.log(y.length)
+		
+		function auto(){
+			context.lineTo(x[index-1],y[index-1]);
+			context.fill();
+			context.stroke();
+		}
+		
+		setInterval(function(){
+			index++;
+			auto();
+			if(index == x.length){
+				setTimeout(function(){
+					$("div").animate({
+						opacity:1
+					})
+					$("#myCanvas").fadeOut();
+				},100)
+			}
+		},100)
+    </script>
+</html>
